@@ -32,6 +32,9 @@ let divide = (x, y) => {
 // updates value if user presses on screen button
 for (var i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
+    if (stored != "" && input.value == "") {
+      input.value = "";
+    }
     input.value += this.value;
     screenValue = input.value;
   });
@@ -39,14 +42,19 @@ for (var i = 0; i < numbers.length; i++) {
 
 for (var i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function () {
-    if ((operators[i] = "+")) {
+    if (operand != "") {
+      // if operand exists
+      opera(stored, screenValue, operand);
+      operand = this.value;
+    } else {
       stored = screenValue;
       operand = this.value;
-      screenValue = "";
       input.value = "";
     }
   });
 }
+
+//12 + 7 - 5 * 3 = should yield 42.
 
 let opera = (storedNumber, currentNumber, op) => {
   let storedInt = parseInt(storedNumber);
@@ -58,10 +66,16 @@ let opera = (storedNumber, currentNumber, op) => {
     operand = "";
   } else if (op == "-") {
     input.value = subtract(storedInt, currentInt);
+    stored = input.value;
+    operand = "";
   } else if (op == "*") {
     input.value = multiply(storedInt, currentInt);
+    stored = input.value;
+    operand = "";
   } else if (op == "/") {
     input.value = divide(storedInt, currentInt);
+    stored = input.value;
+    operand = "";
   }
 };
 
