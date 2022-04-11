@@ -10,9 +10,23 @@ let plus = document.querySelector(".plus");
 let minus = document.querySelector(".minus");
 let multi = document.querySelector(".multi");
 let divider = document.querySelector(".divide");
+let remain = document.querySelector(".remainder");
 
 let numbers = document.querySelectorAll(".number"); // get all number elements
 let operators = document.querySelectorAll(".operator"); // get all operator elements
+
+let colorReset = () => {
+  plus.style.cssText =
+    "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+  minus.style.cssText =
+    "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+  multi.style.cssText =
+    "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+  divider.style.cssText =
+    "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+  remain.style.cssText =
+    "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+};
 
 let add = (x, y) => {
   return x + y;
@@ -30,6 +44,10 @@ let divide = (x, y) => {
   return x / y;
 };
 
+let remainder = (x, y) => {
+  return x % y;
+};
+
 let toggle = true; // toggle false in order to let numberListener know to wipe text on subsequent input, then toggle true
 
 // updates value if user presses on screen button
@@ -40,15 +58,7 @@ for (var i = 0; i < numbers.length; i++) {
       input.value = "";
       toggle = true;
     }
-    // some additional visual functionality
-    plus.style.cssText =
-      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
-    minus.style.cssText =
-      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
-    multi.style.cssText =
-      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
-    divider.style.cssText =
-      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+    colorReset();
     input.value += this.value;
   });
 }
@@ -82,6 +92,9 @@ for (var i = 0; i < operators.length; i++) {
     } else if (this.value == "/") {
       divider.style.cssText =
         "color:yellow; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
+    } else if (this.value == "%") {
+      remain.style.cssText =
+        "color:brown; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
     }
   });
 }
@@ -114,6 +127,11 @@ let opera = (storedNumber, currentNumber, op) => {
       stored = input.value;
       display.innerText = input.value;
       operand = "";
+    } else if (op == "%") {
+      input.value = remainder(storedInt, currentInt);
+      stored = input.value;
+      display.innerText = input.value;
+      operand = "";
     }
   } else {
     // if not deicmals
@@ -140,6 +158,11 @@ let opera = (storedNumber, currentNumber, op) => {
       stored = input.value;
       display.innerText = input.value;
       operand = "";
+    } else if (op == "%") {
+      input.value = remainder(storedInt, currentInt);
+      stored = input.value;
+      display.innerText = input.value;
+      operand = "";
     }
   }
 };
@@ -151,6 +174,11 @@ let wipe = () => {
   input.value = "";
   toggle = true;
   display.innerText = "";
+  colorReset();
 };
 
 let equalToggle = () => (toggle = false);
+
+let posNeg = () => {
+  input.value *= -1;
+};

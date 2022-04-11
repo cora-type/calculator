@@ -24,6 +24,7 @@
       <div class="minus">-</div>
       <div class="multi">*</div>
       <div class="divide">/</div>
+      <div class="remainder">%</div>
     </div>
     <div id="display">####</div>
     <div class="main">
@@ -48,8 +49,9 @@
         <button type="button" class="number" value="2">2</button>
         <button type="button" class="number" value="3">3</button>
 
-        <button type="button" class="number" value="0">0</button>
         <button type="button" class="number" value=".">.</button>
+        <button type="button" class="number" value="0">0</button>
+
         <button
           onclick="wipe()"
           type="button"
@@ -67,6 +69,8 @@
         >
           =
         </button>
+        <button onclick="posNeg()" class="positiveNegative">+/-</button>
+        <button type="button" class="operator brown" value="%">%</button>
       </div>
     </div>
   </body>

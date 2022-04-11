@@ -49,6 +49,7 @@ input:focus {
   border: 0px;
   cursor: pointer;
   background-color: white;
+  font-size: 18px;
   transition: background-color 0.6s linear;
   transition: font-size 0.2s linear;
 }
@@ -61,49 +62,60 @@ input:focus {
 #calculatorContainer > .red:hover {
   border: solid 2px red;
   color: red;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .blue:hover {
   border: solid 2px blue;
   color: blue;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .green:hover {
   border: solid 2px green;
   color: green;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .yellow:hover {
   border: solid 2px rgb(255, 196, 0);
   color: rgb(255, 196, 0);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .number:hover {
   border: solid 2px rgb(245, 154, 120);
   color: rgb(245, 154, 120);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .purple:hover {
   border: solid 2px purple;
   color: purple;
-  font-size: 20px;
+  font-size: 22px;
 }
-
 #calculatorContainer > .all-clear:hover {
   border: solid 2px lightgray;
   color: lightgray;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #calculatorContainer > .equal-sign:hover {
   border: solid 2px rgb(148, 215, 244);
   color: rgb(148, 215, 244);
   font-size: 50px;
+}
+
+#calculatorContainer > .brown:hover {
+  border: solid 2px brown;
+  color: brown;
+  font-size: 22px;
+}
+
+#calculatorContainer > .positiveNegative:hover {
+  border: solid 2px rgb(255, 0, 221);
+  color: rgb(255, 0, 221);
+  font-size: 22px;
 }
 
 #calculatorContainer:hover {
