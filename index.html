@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>c</title>
+    <title>a calculator</title>
     <script src="script.js" defer></script>
     <link
       rel="stylesheet"
@@ -19,23 +19,22 @@
     />
   </head>
   <body>
-    <hr />
-    <div class="header">#+-*</div>
+    <div class="header">
+      <div class="plus">+</div>
+      <div class="minus">-</div>
+      <div class="multi">*</div>
+      <div class="divide">/</div>
+    </div>
+    <div id="display">####</div>
     <div class="main">
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        minlength="4"
-        maxlength="8"
-        size="10"
-      />
+      <input type="text" id="name" name="name" autofocus />
       <div id="calculatorContainer">
-        <button type="button" class="operator" value="+">+</button>
-        <button type="button" class="operator" value="-">-</button>
-        <button type="button" class="operator" value="*">&times;</button>
-        <button type="button" class="operator" value="/">&divide;</button>
+        <button type="button" class="operator red" value="+">+</button>
+        <button type="button" class="operator blue" value="-">-</button>
+        <button type="button" class="operator green" value="*">&times;</button>
+        <button type="button" class="operator yellow" value="/">
+          &divide;
+        </button>
 
         <button type="button" class="number" value="7">7</button>
         <button type="button" class="number" value="8">8</button>

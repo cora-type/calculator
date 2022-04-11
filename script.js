@@ -1,7 +1,15 @@
-const input = document.getElementById("name"); //text box/display element
+const input = document.getElementById("name"); //text box element
+const display = document.getElementById("display"); // display element
 
 let stored = ""; //store number
 let operand = ""; // store operator
+
+//initialize visual elements
+
+let plus = document.querySelector(".plus");
+let minus = document.querySelector(".minus");
+let multi = document.querySelector(".multi");
+let divider = document.querySelector(".divide");
 
 let numbers = document.querySelectorAll(".number"); // get all number elements
 let operators = document.querySelectorAll(".operator"); // get all operator elements
@@ -32,6 +40,15 @@ for (var i = 0; i < numbers.length; i++) {
       input.value = "";
       toggle = true;
     }
+    // some additional visual functionality
+    plus.style.cssText =
+      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+    minus.style.cssText =
+      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+    multi.style.cssText =
+      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
+    divider.style.cssText =
+      "color:black; transition: color .5s linear; font-size:60px; transition: font-size .5s linear";
     input.value += this.value;
   });
 }
@@ -44,9 +61,27 @@ for (var i = 0; i < operators.length; i++) {
       opera(stored, input.value, operand); // evaluate the operator
       operand = this.value; // store the pressed operator
     } else {
+      display.innerText = input.value + " " + this.value;
       toggle = false;
       stored = input.value;
       operand = this.value;
+    }
+  });
+
+  operators[i].addEventListener("click", function () {
+    //some additional visual functionality
+    if (this.value == "+") {
+      plus.style.cssText =
+        "color:red; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
+    } else if (this.value == "-") {
+      minus.style.cssText =
+        "color:blue; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
+    } else if (this.value == "*") {
+      multi.style.cssText =
+        "color:green; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
+    } else if (this.value == "/") {
+      divider.style.cssText =
+        "color:yellow; transition: color .5s linear; font-size:80px; transition: font-size .5s linear";
     }
   });
 }
@@ -62,18 +97,22 @@ let opera = (storedNumber, currentNumber, op) => {
     if (op == "+") {
       input.value = add(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "-") {
       input.value = subtract(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "*") {
       input.value = multiply(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "/") {
       input.value = divide(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     }
   } else {
@@ -84,18 +123,22 @@ let opera = (storedNumber, currentNumber, op) => {
     if (op == "+") {
       input.value = add(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "-") {
       input.value = subtract(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "*") {
       input.value = multiply(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     } else if (op == "/") {
       input.value = divide(storedInt, currentInt);
       stored = input.value;
+      display.innerText = input.value;
       operand = "";
     }
   }
@@ -107,6 +150,7 @@ let wipe = () => {
   operand = "";
   input.value = "";
   toggle = true;
+  display.innerText = "";
 };
 
 let equalToggle = () => (toggle = false);
