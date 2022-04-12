@@ -179,6 +179,7 @@ let wipe = () => {
 
 let equalToggle = () => (toggle = false);
 
+// change number to positive or negative
 let posNeg = () => {
   input.value *= -1;
 };
